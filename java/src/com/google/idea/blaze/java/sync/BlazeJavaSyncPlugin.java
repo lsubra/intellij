@@ -223,7 +223,7 @@ public class BlazeJavaSyncPlugin extends BlazeSyncPlugin.Adapter {
           LibraryEditor.updateProjectLibraries(project, context, blazeProjectData, libraries);
         });
 
-    LibraryEditor.configureDependencies(workspaceModifiableModel, libraries);
+    LibraryEditor.configureDependencies(workspaceModifiableModel, libraries, project, "external-oss");
   }
 
   private static void updateJdk(

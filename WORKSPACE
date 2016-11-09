@@ -5,7 +5,7 @@ workspace(name = "intellij_with_bazel")
 new_http_archive(
     name = "intellij_latest",
     build_file = "intellij_platform_sdk/BUILD.idea",
-    url = "https://download.jetbrains.com/idea/ideaIC-2016.2.4.tar.gz",
+    url = "https://download.jetbrains.com/idea/ideaIC-2016.2.5.tar.gz",
 )
 
 # The plugin api for CLion 2016.1.3. This is required to build CLwB,

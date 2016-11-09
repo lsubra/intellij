@@ -29,6 +29,13 @@ java_import(
 )
 
 filegroup(
+    name = "junit",
+    srcs = glob([
+        "idea-IC-*/plugins/junit/lib/*.jar",
+    ]),
+)
+
+filegroup(
     name = "application_info_jar",
     srcs = glob(["idea-IC-*/lib/resources.jar"]),
 )

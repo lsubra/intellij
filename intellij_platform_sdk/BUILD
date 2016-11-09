@@ -83,6 +83,14 @@ java_library(
     }),
 )
 
+java_import(
+    name = "junit",
+    testonly = 1,
+    jars = select({
+        "//conditions:default": ["@intellij_latest//:junit"],
+    }),
+)
+
 filegroup(
     name = "application_info_jar",
     srcs = select({
