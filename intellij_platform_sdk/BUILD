@@ -85,7 +85,7 @@ java_library(
 
 java_import(
     name = "junit",
-    testonly = 1,
+#    testonly = 1, # Disabled to avoid testonly failures.
     jars = select({
         "//conditions:default": ["@intellij_latest//:junit"],
     }),
