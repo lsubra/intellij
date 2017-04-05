@@ -207,6 +207,14 @@ java_library(
     deps = [":plugin_api"],
 )
 
+java_import(
+    name = "junit",
+    testonly = 1,
+    jars = select({
+        "//conditions:default": ["@intellij_latest//:junit"],
+    }),
+)
+
 filegroup(
     name = "application_info_jar",
     srcs = select_from_plugin_api_directory(

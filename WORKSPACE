@@ -15,7 +15,7 @@ new_http_archive(
 new_http_archive(
     name = "IC_162_2032_8",
     build_file = "intellij_platform_sdk/BUILD.idea",
-    url = "https://www.jetbrains.com/intellij-repository/releases/com/jetbrains/intellij/idea/ideaIC/2016.2.4/ideaIC-2016.2.4.zip",
+    url = "https://download.jetbrains.com/idea/ideaIC-2016.2.5.tar.gz",
 )
 
 # The plugin api for CLion 2016.2.2. This is required to build CLwB,

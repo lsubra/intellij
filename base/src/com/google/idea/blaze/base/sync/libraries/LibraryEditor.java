@@ -25,6 +25,8 @@ import com.google.idea.blaze.base.scope.output.PrintOutput;
 import com.google.idea.blaze.base.sync.BlazeSyncPlugin;
 import com.google.idea.blaze.base.sync.workspace.ArtifactLocationDecoder;
 import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.module.Module;
+import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ModifiableRootModel;
 import com.intellij.openapi.roots.OrderRootType;
@@ -133,6 +135,23 @@ public class LibraryEditor {
 
   public static void configureDependencies(
       ModifiableRootModel modifiableRootModel, Collection<BlazeLibrary> libraries) {
+    for (BlazeLibrary library : libraries) {
+      updateLibraryDependency(modifiableRootModel, library.key);
+    }
+  }
+
+  public static void configureDependencies(
+      ModifiableRootModel modifiableRootModel, Collection<BlazeLibrary> libraries,
+      Project project, String moduleName) {
+    // Add all modules named external to the list before libraries so that source code is
+    // resolved via them.
+    for (Module module : ModuleManager.getInstance(project).getModules()) {
+      if (module.getName().startsWith("external-")) {
+        modifiableRootModel
+            .addModuleOrderEntry(ModuleManager.getInstance(project).getModifiableModel()
+                .findModuleByName(moduleName));
+      }
+    }
     for (BlazeLibrary library : libraries) {
       updateLibraryDependency(modifiableRootModel, library.key);
     }

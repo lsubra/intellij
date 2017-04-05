@@ -107,7 +107,9 @@ public class ModuleEditorImpl implements BlazeSyncPlugin.ModuleEditor {
     List<Module> orphanModules = Lists.newArrayList();
     for (Module module : ModuleManager.getInstance(project).getModules()) {
       if (!modules.containsKey(module.getName())) {
-        orphanModules.add(module);
+        if (!module.getName().startsWith("external-")) {
+          orphanModules.add(module);
+        }
       }
     }
     if (orphanModules.size() > 0) {

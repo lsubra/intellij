@@ -725,7 +725,8 @@ final class BlazeSyncTask implements Progressive {
 
     List<BlazeLibrary> libraries = BlazeLibraryCollector.getLibraries(newBlazeProjectData);
     LibraryEditor.updateProjectLibraries(project, context, newBlazeProjectData, libraries);
-    LibraryEditor.configureDependencies(workspaceModifiableModel, libraries);
+//    LibraryEditor.configureDependencies(workspaceModifiableModel, libraries);
+    LibraryEditor.configureDependencies(workspaceModifiableModel, libraries, project, "external-oss");
 
     for (BlazeSyncPlugin blazeSyncPlugin : BlazeSyncPlugin.EP_NAME.getExtensions()) {
       blazeSyncPlugin.updateProjectStructure(
